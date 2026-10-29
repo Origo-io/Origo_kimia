@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>Origo Kimia — Laboratorium Kimia 3D</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">O</span><span><b>Origo Kimia</b><small>Laboratorium kimia digital</small></span></a>
+    <nav><a href="#lab">Laboratorium</a><a href="#catalog">Katalog</a><a href="#about">Tentang</a></nav>
+    <button id="themeBtn" class="icon-btn" aria-label="Ganti tema">◐</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span> SIMULASI KIMIA INTERAKTIF</span>
+        <h1>Jelajahi kimia<br><em>dalam 3 dimensi.</em></h1>
+        <p>Bangun molekul, amati struktur, dan jelajahi skenario reaksi dalam laboratorium virtual yang dirancang untuk belajar dan eksperimen konseptual.</p>
+        <div class="hero-actions"><a class="primary-btn" href="#lab">Buka laboratorium <span>↗</span></a><a class="text-link" href="#catalog">Jelajahi modul ↓</a></div>
+        <div class="hero-stats"><div><b>3D</b><span>Visual molekul</span></div><div><b>5</b><span>Modul awal</span></div><div><b>Demo</b><span>Berbasis browser</span></div></div>
+      </div>
+      <div class="hero-art">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="molecule-hero">
+          <span class="atom atom-c"></span><span class="atom atom-o"></span><span class="atom atom-h1"></span><span class="atom atom-h2"></span><span class="bond bond-a"></span><span class="bond bond-b"></span><span class="bond bond-c"></span>
+        </div>
+        <div class="float-card card-top"><span class="mini-dot cyan"></span><div><b>Struktur molekul</b><small>Visualisasi konseptual</small></div></div>
+        <div class="float-card card-bottom"><span class="pulse">↗</span><div><b>Model interaktif</b><small>Putar · Zoom · Pilih atom</small></div></div>
+        <span class="art-label">MOLECULAR EXPLORER / 001</span>
+      </div>
+    </section>
+
+    <section id="lab" class="section">
+      <div class="section-heading"><div><span class="eyebrow">RUANG KERJA</span><h2>Laboratorium 3D</h2></div><span class="status-pill"><span class="dot"></span> Demo aktif</span></div>
+      <div class="lab-layout">
+        <aside class="panel control-panel">
+          <div class="panel-title"><span>01 / STRUKTUR</span><b>Konfigurasi molekul</b></div>
+          <label for="moleculeSelect">Pilih model</label>
+          <select id="moleculeSelect">
+            <option value="water">Air (H₂O)</option><option value="co2">Karbon dioksida (CO₂)</option><option value="methane">Metana (CH₄)</option><option value="ammonia">Amonia (NH₃)</option><option value="oxygen">Oksigen (O₂)</option>
+          </select>
+          <div class="control-row"><label for="atomScale">Ukuran atom</label><output id="atomScaleValue">100%</output></div>
+          <input id="atomScale" type="range" min="70" max="140" value="100">
+          <div class="control-row"><label for="rotationSpeed">Kecepatan rotasi</label><output id="rotationValue">1.0×</output></div>
+          <input id="rotationSpeed" type="range" min="0" max="20" value="10">
+          <div class="toggle-row"><span>Putar otomatis</span><label class="switch"><input id="autoRotate" type="checkbox" checked><span></span></label></div>
+          <div class="toggle-row"><span>Tampilkan label atom</span><label class="switch"><input id="showLabels" type="checkbox" checked><span></span></label></div>
+          <div class="control-buttons"><button id="resetView" class="secondary-btn">Reset tampilan</button><button id="screenshotBtn" class="secondary-btn">Simpan gambar</button></div>
+          <div class="hint"><span>ⓘ</span> Model 3D ini adalah visual edukatif, bukan hasil perhitungan kuantum atau prediksi reaksi tervalidasi.</div>
+        </aside>
+
+        <div class="viewer panel">
+          <div class="viewer-toolbar"><div><span class="live-dot"></span><b id="viewerTitle">AIR / H₂O</b><small>MODEL MOLEKUL</small></div><div class="view-tools"><button id="viewBall" class="tool-btn active">Bola & batang</button><button id="viewSpace" class="tool-btn">Isi ruang</button></div></div>
+          <div id="moleculeStage" class="molecule-stage">
+            <div class="stage-grid"></div><div id="moleculeCanvas" class="molecule-canvas" aria-label="Visualisasi molekul 3D"></div>
+            <div class="stage-tip">Seret untuk memutar · Gulir untuk zoom</div>
+            <div class="axis"><span>X</span><span>Y</span><span>Z</span></div>
+          </div>
+          <div class="viewer-footer"><div><span>ATOM</span><b id="atomCount">3</b></div><div><span>IKATAN</span><b id="bondCount">2</b></div><div><span>GEOMETRI</span><b id="geometry">Bengkok</b></div><div><span>RUMUS</span><b id="formula">H₂O</b></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reaction" class="section">
+      <div class="section-heading"><div><span class="eyebrow">RUANG EKSPERIMEN</span><h2>Eksplorasi campuran</h2></div><span class="subtle">Model konsep, bukan instruksi laboratorium</span></div>
+      <div class="reaction-layout">
+        <div class="panel reaction-panel">
+          <div class="panel-title"><span>02 / SKENARIO</span><b>Atur komponen</b></div>
+          <div class="mix-selects"><div><label for="substanceA">Komponen A</label><select id="substanceA"><option value="water">Air (H₂O)</option><option value="oxygen">Oksigen (O₂)</option><option value="co2">Karbon dioksida (CO₂)</option><option value="methane">Metana (CH₄)</option></select></div><div class="plus">+</div><div><label for="substanceB">Komponen B</label><select id="substanceB"><option value="co2">Karbon dioksida (CO₂)</option><option value="water">Air (H₂O)</option><option value="oxygen">Oksigen (O₂)</option><option value="ammonia">Amonia (NH₃)</option></select></div></div>
+          <div class="control-row"><label for="temperature">Suhu konseptual</label><output id="temperatureValue">25 °C</output></div><input id="temperature" type="range" min="-50" max="250" value="25">
+          <div class="control-row"><label for="pressure">Tekanan konseptual</label><output id="pressureValue">1.0 bar</output></div><input id="pressure" type="range" min="1" max="50" value="10">
+          <button id="simulateBtn" class="primary-btn full">Jalankan analisis konseptual <span>→</span></button>
+        </div>
+        <div class="panel result-panel"><div class="result-head"><span class="eyebrow">HASIL SIMULASI</span><span class="status-pill neutral">Edukasi</span></div><div id="resultIcon" class="result-icon">⚗</div><h3 id="resultTitle">Siap dianalisis</h3><p id="resultText">Pilih dua komponen lalu jalankan analisis untuk melihat ringkasan sistem.</p><div class="result-metrics"><div><span>Suhu</span><b id="resultTemp">25 °C</b></div><div><span>Tekanan</span><b id="resultPressure">1.0 bar</b></div><div><span>Status</span><b id="resultStatus">Menunggu</b></div></div><p class="disclaimer">Peringatan: antarmuka ini tidak menghitung mekanisme reaksi, produk, laju, atau bahaya secara ilmiah. Jangan gunakan untuk menentukan kondisi eksperimen nyata.</p></div>
+      </div>
+    </section>
+
+    <section id="catalog" class="section">
+      <div class="section-heading"><div><span class="eyebrow">EKOSISTEM MODULAR</span><h2>Katalog modul</h2></div><span class="subtle">Fondasi gelombang pertama</span></div>
+      <div class="filter-row"><div id="moduleFilters" class="filters"><button class="filter active" data-filter="all">Semua modul</button><button class="filter" data-filter="visual">Visualisasi</button><button class="filter" data-filter="reactor">Reaktor</button><button class="filter" data-filter="analysis">Analisis</button><button class="filter" data-filter="material">Material & bio</button><button class="filter" data-filter="safety">Keselamatan</button></div><input id="moduleSearch" class="search" placeholder="Cari fitur..." aria-label="Cari fitur"></div>
+      <div id="moduleGrid" class="module-grid"></div>
+    </section>
+
+    <section id="about" class="about-strip"><div><span class="eyebrow">PRINSIP ORIGO KIMIA</span><h2>Visual yang indah.<br><em>Model yang jujur.</em></h2></div><p>Arsitektur memisahkan tampilan 3D dari solver ilmiah. Versi demo ini menyediakan interaksi antarmuka dan katalog awal; prediksi yang dapat dipercaya membutuhkan mesin komputasi kimia, data tervalidasi, dan pengujian ilmiah.</p></section>
+  </main>
+  <footer><a class="brand" href="#"><span class="brand-mark">O</span><span><b>Origo Kimia</b><small>Eksplorasi kimia digital</small></span></a><span>Prototipe edukatif · Versi 0.1.0</span><a href="#lab">Kembali ke atas ↑</a></footer>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
