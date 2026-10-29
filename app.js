@@ -147,4 +147,4 @@ $("moduleFilters").addEventListener("click",e=>{const btn=e.target.closest("[dat
 $("moduleSearch").addEventListener("input",renderModules);
 $("themeBtn").addEventListener("click",()=>document.body.classList.toggle("light-theme"));
 renderMolecule("water");startRotation();updateSliderLabels();renderModules();
-                                                                 
+           
